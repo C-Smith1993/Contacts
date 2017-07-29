@@ -92,11 +92,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = self.tableView.indexPathForSelectedRow?.row
         
-        let tvc = segue.destination as! DetailTableViewController
+        let vc = segue.destination as! DetailViewController
         
-        tvc.firstname = contacts[indexPath!].firstName
-        tvc.surname = contacts[indexPath!].surname
-        tvc.contactTitle = contacts[indexPath!].contactTitle
+        vc.firstname = contacts[indexPath!].firstName
+        vc.surname = contacts[indexPath!].surname
+        vc.contactTitle = contacts[indexPath!].contactTitle
         
         
     }
