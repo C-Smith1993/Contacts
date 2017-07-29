@@ -15,6 +15,7 @@ class DetailVC: UIViewController {
     var contactTitle = String()
     var address = String()
     var phoneNo = String()
+    var email = String()
     
     
     @IBOutlet weak var contactTitleLabel: UILabel!
@@ -22,7 +23,7 @@ class DetailVC: UIViewController {
     @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumLabel: UILabel!
-    
+    @IBOutlet weak var emailLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ class DetailVC: UIViewController {
         surnameLabel.text = surname
         addressLabel.text = address
         phoneNumLabel.text = phoneNo
+        emailLabel.text = email
     }
 
     override func didReceiveMemoryWarning() {

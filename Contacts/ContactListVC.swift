@@ -15,6 +15,7 @@ struct Contact {
     let contactTitle: String
     let address: String
     let phoneNo: String
+    let email: String
     
 }
 
@@ -65,7 +66,9 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         
                         let phoneNoString = item["phoneNumber"] as! String
                         
-                        contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString))
+                        let emailString = item["email"] as! String
+                        
+                        contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString, email: emailString))
                         tableView.reloadData()
                     }
                   }catch {
@@ -106,6 +109,7 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         vc.contactTitle = contacts[indexPath!].contactTitle
         vc.address = contacts[indexPath!].address
         vc.phoneNo = contacts[indexPath!].phoneNo
+        vc.email = contacts[indexPath!].email
         
         
     }
