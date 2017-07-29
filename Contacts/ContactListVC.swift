@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactListVC.swift
 //  Contacts
 //
 //  Created by Chris Smith on 28/07/2017.
@@ -13,9 +13,12 @@ struct Contact {
     let firstName: String
     let surname: String
     let contactTitle: String
+    let address: String
+    let phoneNo: String
+    
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
         // UI Connections
         @IBOutlet weak var tableView: UITableView!
@@ -56,9 +59,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                         let surnameString = item["surname"] as! String
                         
-                        let title = item["title"] as! String
+                        let titleString = item["title"] as! String
                         
-                        contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: title))
+                        let addressString = item["address"] as! String
+                        
+                        let phoneNoString = item["phoneNumber"] as! String
+                        
+                        contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString))
                         tableView.reloadData()
                     }
                   }catch {
@@ -92,11 +99,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = self.tableView.indexPathForSelectedRow?.row
         
-        let vc = segue.destination as! DetailViewController
+        let vc = segue.destination as! DetailVC
         
         vc.firstname = contacts[indexPath!].firstName
         vc.surname = contacts[indexPath!].surname
         vc.contactTitle = contacts[indexPath!].contactTitle
+        vc.address = contacts[indexPath!].address
+        vc.phoneNo = contacts[indexPath!].phoneNo
         
         
     }
