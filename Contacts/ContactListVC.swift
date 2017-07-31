@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreData
 
 struct Contact {
     let firstName: String
@@ -29,6 +30,15 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Properties
         var contacts = [Contact]()
         var searchURL = "http://demomedia.co.uk/files/contacts.json"
+    
+    var firstName = String()
+    var surname = String()
+    var contactTitle = String()
+    var address = String()
+    var phoneNo = String()
+    var email = String()
+    var updated = String()
+    var created = String()
     
         // Typealias
         typealias JSON = [String : AnyObject]
@@ -59,16 +69,22 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         let item = readableJSON[i]
                         
                         let firstnameString = item["firstname"] as! String
+                        firstName = firstnameString
                         
                         let surnameString = item["surname"] as! String
+                        surname = surnameString
                         
                         let titleString = item["title"] as! String
+                        contactTitle = titleString
                         
                         let addressString = item["address"] as! String
+                        address = addressString
                         
                         let phoneNoString = item["phoneNumber"] as! String
+                        phoneNo = phoneNoString
                         
                         let emailString = item["email"] as! String
+                        email = emailString
                         
                         // Created at time
                         if let createdAt = item["createdAt"] as? String{
@@ -79,6 +95,7 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
                         let createdDateString = dayTimePeriodFormatter.string(from: date as Date)
                         
+                        created = createdDateString
                             
                         // Updated at time
                         if let updatedAt = item["createdAt"] as? String{
@@ -89,9 +106,11 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
                         let updatedDateString = dayTimePeriodFormatter.string(from: date as Date)
                         
+                        updated = updatedDateString
                         
                             contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString, email: emailString, updatedAt: updatedDateString, createdAt: createdDateString))
                         tableView.reloadData()
+                        saveToCoreData()
                       }
                      }
                     }
@@ -101,8 +120,23 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     
     
+        // CoreData
+    func saveToCoreData(){
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let contact = Contacts(context: context)
+    contact.firstName = firstName
+    contact.surname = surname
+    contact.address = address
+    contact.contactTitle = contactTitle
+    contact.phoneNumber = phoneNo
+    contact.email = email
+    contact.updatedAt = updated
+    contact.createdAt = created
         
+    (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
+    }
         
         // MARK: - TableView Setup
         
