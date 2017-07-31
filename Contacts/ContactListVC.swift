@@ -68,6 +68,28 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         
                         let emailString = item["email"] as! String
                         
+                        // Created at time
+                        if let createdAt = item["createdAt"] as? String{
+                        let createdAtTime = Int(createdAt)
+                        
+                        let date = NSDate(timeIntervalSince1970: TimeInterval(createdAtTime!))
+                        let dayTimePeriodFormatter = DateFormatter()
+                        dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
+                        let dateString = dayTimePeriodFormatter.string(from: date as Date)
+                        print(dateString)
+                        }
+                            
+                        // Updated at time
+                        if let updatedAt = item["createdAt"] as? String{
+                        let updatedAtTime = Int(updatedAt)
+                        
+                        let date = NSDate(timeIntervalSince1970: TimeInterval(updatedAtTime!))
+                        let dayTimePeriodFormatter = DateFormatter()
+                        dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
+                        let dateString = dayTimePeriodFormatter.string(from: date as Date)
+                            print("Updated at: \(dateString)")
+                        }
+                        
                         contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString, email: emailString))
                         tableView.reloadData()
                     }
