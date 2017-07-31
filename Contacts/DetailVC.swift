@@ -10,6 +10,7 @@ import UIKit
 
 class DetailVC: UIViewController {
 
+    // MARK: - Properties
     var firstname = String()
     var surname = String()
     var contactTitle = String()
@@ -19,7 +20,7 @@ class DetailVC: UIViewController {
     var created = String()
     var updated = String()
     
-    
+    // MARK: - UI Element Connections
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumLabel: UILabel!
@@ -30,20 +31,11 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         firstNameLabel.text = "\(contactTitle) \(firstname) \(surname)"
         addressLabel.text = address
         phoneNumLabel.text = phoneNo
         emailLabel.text = email
-        updatedLabel.text = "Updated at: \(updated)"
-        createdLabel.text = "Created at: \(created)"
+        updatedLabel.text = "Updated: \(updated)"
+        createdLabel.text = "Created: \(created)"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
