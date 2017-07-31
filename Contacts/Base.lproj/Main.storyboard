@@ -125,16 +125,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Updated" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFm-od-UVz">
+                                <rect key="frame" x="16" y="296" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flo-LL-lgw">
+                                <rect key="frame" x="16" y="325" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="vWM-Kd-kx6" id="bC4-zF-IMP"/>
                         <outlet property="contactTitleLabel" destination="B7K-8Z-uDI" id="DDa-6K-7g3"/>
+                        <outlet property="createdLabel" destination="Flo-LL-lgw" id="WAD-Sf-RPh"/>
                         <outlet property="emailLabel" destination="rp6-lU-IN8" id="B0V-AJ-iiq"/>
                         <outlet property="firstNameLabel" destination="AuV-1r-8gN" id="zpL-f4-1EW"/>
                         <outlet property="phoneNumLabel" destination="XzY-y5-1Zj" id="DqB-cR-uLa"/>
                         <outlet property="surnameLabel" destination="ZO7-5m-h59" id="E0X-1F-0nn"/>
+                        <outlet property="updatedLabel" destination="aFm-od-UVz" id="PRF-BO-ghj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARz-cJ-PBC" userLabel="First Responder" sceneMemberID="firstResponder"/>

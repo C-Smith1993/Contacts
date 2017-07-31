@@ -16,6 +16,8 @@ struct Contact {
     let address: String
     let phoneNo: String
     let email: String
+    let updatedAt: String
+    let createdAt: String
     
 }
 
@@ -75,9 +77,8 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         let date = NSDate(timeIntervalSince1970: TimeInterval(createdAtTime!))
                         let dayTimePeriodFormatter = DateFormatter()
                         dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
-                        let dateString = dayTimePeriodFormatter.string(from: date as Date)
-                        print(dateString)
-                        }
+                        let createdDateString = dayTimePeriodFormatter.string(from: date as Date)
+                        
                             
                         // Updated at time
                         if let updatedAt = item["createdAt"] as? String{
@@ -86,12 +87,13 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                         let date = NSDate(timeIntervalSince1970: TimeInterval(updatedAtTime!))
                         let dayTimePeriodFormatter = DateFormatter()
                         dayTimePeriodFormatter.dateFormat = "dd MMM hh:mm a"
-                        let dateString = dayTimePeriodFormatter.string(from: date as Date)
-                            print("Updated at: \(dateString)")
-                        }
+                        let updatedDateString = dayTimePeriodFormatter.string(from: date as Date)
                         
-                        contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString, email: emailString))
+                        
+                            contacts.append(Contact(firstName: firstnameString, surname: surnameString, contactTitle: titleString, address: addressString, phoneNo: phoneNoString, email: emailString, updatedAt: updatedDateString, createdAt: createdDateString))
                         tableView.reloadData()
+                      }
+                     }
                     }
                   }catch {
                 print(error)
@@ -132,6 +134,8 @@ class ContactListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         vc.address = contacts[indexPath!].address
         vc.phoneNo = contacts[indexPath!].phoneNo
         vc.email = contacts[indexPath!].email
+        vc.created = contacts[indexPath!].createdAt
+        vc.updated = contacts[indexPath!].updatedAt
         
         
     }

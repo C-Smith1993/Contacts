@@ -16,6 +16,8 @@ class DetailVC: UIViewController {
     var address = String()
     var phoneNo = String()
     var email = String()
+    var created = String()
+    var updated = String()
     
     
     @IBOutlet weak var contactTitleLabel: UILabel!
@@ -24,6 +26,8 @@ class DetailVC: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -37,6 +41,8 @@ class DetailVC: UIViewController {
         addressLabel.text = address
         phoneNumLabel.text = phoneNo
         emailLabel.text = email
+        updatedLabel.text = "Updated at: \(updated)"
+        createdLabel.text = "Created at: \(created)"
     }
 
     override func didReceiveMemoryWarning() {
