@@ -20,9 +20,7 @@ class DetailVC: UIViewController {
     var updated = String()
     
     
-    @IBOutlet weak var contactTitleLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -35,9 +33,7 @@ class DetailVC: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        contactTitleLabel.text = contactTitle
-        firstNameLabel.text = firstname
-        surnameLabel.text = surname
+        firstNameLabel.text = "\(contactTitle) \(firstname) \(surname)"
         addressLabel.text = address
         phoneNumLabel.text = phoneNo
         emailLabel.text = email
